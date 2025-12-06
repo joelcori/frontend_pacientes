@@ -1,4 +1,5 @@
 🌐 Frontend – React ejecutar localmente
+
 ✅ Tecnologías
 
 React + Vite Typescript
