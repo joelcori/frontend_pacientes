@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const API_URL = "https://26c9def74f7b.ngrok-free.app/api/Paciente/";
+import { api } from "../api";
 
 export interface Paciente {
   id: number;
@@ -11,16 +9,17 @@ export interface Paciente {
   telefonoCelular: string;
 }
 
-export const getPacientes = () => axios.get<Paciente[]>(`${API_URL}Lista`);
+export const getPacientes = () =>
+  api.get("/Lista");
 
 export const getPacienteById = (id: number) =>
-  axios.get<Paciente>(`${API_URL}Obtener/${id}`);
+  api.get<Paciente>(`/Obtener/${id}`);
 
-export const createPaciente = (data: Paciente) =>
-  axios.post(`${API_URL}Nuevo`, data);
+export const createPaciente = (data: Omit<Paciente, "id">) =>
+  api.post("/Nuevo", data);
 
 export const updatePaciente = (data: Paciente) =>
-  axios.put(`${API_URL}Editar`, data);
+  api.put("/Editar", data);
 
 export const deletePaciente = (id: number) =>
-  axios.delete(`${API_URL}Eliminar/${id}`);
+  api.delete(`/Eliminar/${id}`);
